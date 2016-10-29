@@ -14,6 +14,7 @@ class NuevoRViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var colonias:NSArray?
     var conexion:NSURLConnection?
     var datosRecibidos:NSMutableData?
+    var solecito: LoadingView?
     
     @IBOutlet weak var txtNombre: UITextField!
     @IBOutlet weak var txtApels: UITextField!
@@ -143,6 +144,7 @@ class NuevoRViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 self.datosRecibidos = nil
                 self.conexion = nil
                 print ("No se puede acceder al WS Estados")
+                
             }
         }
         else {
@@ -152,6 +154,7 @@ class NuevoRViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         self.datosRecibidos = nil
         self.conexion = nil
+        //solecito?.removeLoading()
         print ("No se puede acceder al WS Estados: Error del server")
     }
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) { // Ya se logrò la conexion, preparando para recibir datos
@@ -168,6 +171,7 @@ class NuevoRViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
         catch {
             print ("Error al recibir webservice de Estados")
+
         }
     }
     
@@ -179,13 +183,21 @@ class NuevoRViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             let codigoEstado = (estados![row].valueForKey("c_estado") as! String)
             // Invocar el otro WS para llenar el picker de municipios
             SOAPManager.instance.consultaMunicipios(codigoEstado)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "municipiosResponse:", name: "WMRegresaMunicipios", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NuevoRViewController.municipiosResponse(_ :)), name: "WMRegresaMunicipios", object: nil)
+            solecito = LoadingView.loadingInView(self.view, mensaje: "Buscando Municipios")
+            
         }
     }
     
     func municipiosResponse(notif: NSNotification){
         municipios = (notif.userInfo!["WMRegresaMunicipiosResponse"] as! NSArray)
         pickerMuns.reloadAllComponents()
+        //Dejar de recibir TODAS las notificaciones
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "WMRegresaMunicipios", object: nil)
+        solecito?.performSelector(#selector(LoadingView.removeLoading), withObject: nil, afterDelay: 1.0)
     }
     
 }

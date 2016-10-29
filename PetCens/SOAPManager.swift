@@ -15,7 +15,7 @@ public protocol SOAPManagerDelegate:NSObjectProtocol {
 
 public class SOAPManager:NSObject, NSURLConnectionDelegate, NSXMLParserDelegate {
     var delegate:SOAPManagerDelegate?
-    
+    var solecito: LoadingView?
     // Constantes
     private let NODO_RESULTADOS = "NewDataSet"
     private let NODO_MUNICIPIO = "ReturnDataSet"
@@ -111,6 +111,9 @@ public class SOAPManager:NSObject, NSURLConnectionDelegate, NSXMLParserDelegate 
                     delegate!.WMRegresaMunicipiosResponse(self.municipios!)
                 }
             }
+        }else{
+            
+            //solecito = LoadingView.removeLoading(<#T##LoadingView#>)
         }
     }
 }

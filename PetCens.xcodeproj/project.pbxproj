@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500F3FE31DC517F80006DDBA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500F3FE21DC517F80006DDBA /* LoadingView.swift */; };
 		50E640271DBAD6DA005A90CC /* SOAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E640261DBAD6DA005A90CC /* SOAPManager.swift */; };
 		50F644BE1DBAC30500619AC5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F644BD1DBAC30500619AC5 /* SystemConfiguration.framework */; };
 		50F644C01DBAC33E00619AC5 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F644BF1DBAC33E00619AC5 /* ConnectionManager.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500F3FE21DC517F80006DDBA /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		50E640261DBAD6DA005A90CC /* SOAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPManager.swift; sourceTree = "<group>"; };
 		50F644BD1DBAC30500619AC5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		50F644BF1DBAC33E00619AC5 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				FB2C376D1DB1A99D00AFE2D5 /* Info.plist */,
 				FB2C375E1DB1A99D00AFE2D5 /* PetCens.xcdatamodeld */,
 				50F644BF1DBAC33E00619AC5 /* ConnectionManager.swift */,
+				500F3FE21DC517F80006DDBA /* LoadingView.swift */,
 			);
 			path = PetCens;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				FB2C375D1DB1A99D00AFE2D5 /* AppDelegate.swift in Sources */,
 				FB2C37621DB1A99D00AFE2D5 /* MasterViewController.swift in Sources */,
 				50E640271DBAD6DA005A90CC /* SOAPManager.swift in Sources */,
+				500F3FE31DC517F80006DDBA /* LoadingView.swift in Sources */,
 				FB2C37941DB27EBB00AFE2D5 /* NuevoRViewController.swift in Sources */,
 				FB2C37641DB1A99D00AFE2D5 /* DetailViewController.swift in Sources */,
 			);
